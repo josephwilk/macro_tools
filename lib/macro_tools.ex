@@ -1,0 +1,2 @@
+defmodule MacroTools do
+end
