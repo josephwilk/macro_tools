@@ -1,10 +1,15 @@
-defmodule MacroToolsTest do
+defmodule MacroToolsFacts do
   use Amrita.Sweet
 
-  fact "macrofn" do
-    mac_fn = (macrofn form -> quote, do: [unquote(form), unquote(form)])
+  import MacroTools
 
-    mac_fn(10) |> [10, 10]
+  fact "macro_fn through fn" do
+    mac_fn = fn(form) -> quote do
+                           [unquote(form), unquote(form)]
+                         end
+             end
+
+    mac_fn.(10) |> [10, 10]
   end
 
 end
